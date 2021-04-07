@@ -1,12 +1,40 @@
-<table class="table">
-<thead>
-    <tr>
-    <th>Brand Id</th>
-    <th>Brand Name</th>
-    </tr>
-</thead>
-<tr *ngFor="let brand of brands">
-    <td>{{ brand.id }}</td>
-    <td>{{ brand.name }}</td>
-</tr>
-</table>
+<!-- <ul class="list-group">
+    <li (click)="setCurrentAllBrand()" routerLink = "/cars" [class]="getAllBrandClass()" >Tüm Ürünler</li>
+    <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}" *ngFor="let brand of brands" 
+    [class]="getCurrentBrandClass(brand)">{{brand.name}}</li>
+</ul>
+<h5 *ngIf="currentBrand">{{currentBrand.name}} seçtiniz</h5> -->
+
+<style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      padding: 12px 16px;
+      z-index: 1;
+    }
+    
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    </style>
+    
+    <div class="dropdown">
+      <span>Brands</span>
+      <div class="dropdown-content">
+        <ul class="list-group">
+            <li routerLink = "/cars" >All Brands</li>
+            <li (click)="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}" *ngFor="let brand of brands" 
+            [class]="getCurrentBrandClass(brand)">{{brand.name}}</li>
+        </ul>
+        <h5 *ngIf="currentBrand"></h5>
+      </div>
+    </div>
+<br><br><br>
